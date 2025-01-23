@@ -128,6 +128,22 @@ L = \begin{bmatrix} 1 & 0 \\ \frac{2}{3} & 1 \end{bmatrix}, \quad U = \begin{bma
 x = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \tag{20}
 \]
 
+\section*{LU Decomposition using Doolittle's algorithm}
+The LU decomposition can be efficiently compted using Doolittle's algorithm. This method generates the matrices \( L \) (lower triangular) and \( U \) (upper triangular) such that \( A = LU \). The elements of these matrices are calculated as follows: \\
+Elements of the \( U \) Matrix:  \\
+For each column \( j \):
+\begin{align}
+	U_{ij} &= A_{ij} \quad \text{if } i = 0, \\
+	U_{ij} &= A_{ij} - \sum_{k=0}^{i-1} L_{ik} U_{kj} \quad \text{if } i > 0.
+\end{align}
+Elements of the \( L \) Matrix: \\
+For each row \( i \):
+\begin{align}
+	L_{ij} &= \frac{A_{ij}}{U_{jj}} \quad \text{if } j = 0, \\
+	L_{ij} &= \frac{A_{ij} - \sum_{k=0}^{j-1} L_{ik} U_{kj}}{U_{jj}} \quad \text{if } j > 0.
+\end{align}
+
+
 \begin{figure}[h!]
    \centering
    \includegraphics[width=\columnwidth]{fig/combined_fig.jpg}
